@@ -12,13 +12,16 @@ public class BinarySearch
 		int index = 1;
 		// Sorting the element
 		Arrays.sort(arr); // Suppose this is a bubble sort algorithm
+		
 		// searching the element
 		for (int value : arr) {
 			if (value == number)
+				//returning the index of the searched element
 				return index;
 			else
 				index++;
 		}
+		//returning the index of the searched element
 		return 0;
 	}
 }
