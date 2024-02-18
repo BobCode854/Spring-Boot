@@ -17,6 +17,7 @@ package com.springboot.SpringDataJPA.entity;
  * 
  */
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,21 +35,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="tbl_student",
+@Table(name="tbl_student2",
 uniqueConstraints = @UniqueConstraint(
 		name = "emailId_unqiue",
 		columnNames="email_address")
 )
-public class Student {
+public class Student2 {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO,generator="student_seq")
-	@SequenceGenerator(name="student_seq",allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO,generator="student2_seq")
+	@SequenceGenerator(name="student2_seq",allocationSize = 1)
 	private Long studentId;
+	
 	@Column(name="email_address",nullable = false)
 	private String emailId;
+	
 	private String firstName;
-	private String guardianEmail;
-	private String guardianMobile;
-	private String guardianName;
+	
+	@Embedded
+	private Guardian guardian;
 }
